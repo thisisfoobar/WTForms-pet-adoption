@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Pet Adoption{% endblock %}
+{% block main %}
+<div class="d-flex container justify-content-md-start">
+    <h1 class="display-1">Pets</h1>
+</div>
+
+<div class="container text-center">
+    <div class="row justify-content-md-start">
+    {% for pet in pets %}
+        <div class="col-4">
+            <a href="/edit_pet/{{pet.id}}">
+                <img src="{{pet.photo_url}}" alt="{{pet.name}} photo" class="img-thumbnail rounded">
+            </a>
+            {% if pet.available %}
+            <p>{{pet.name}} is <b>available</b></p>
+            {% else %}
+            <p>{{pet.name}} is not available</p>
+            {% endif %}
+        </div>  
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
